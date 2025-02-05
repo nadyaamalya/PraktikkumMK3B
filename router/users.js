@@ -1,15 +1,28 @@
-const express = require('express')
-const router = express.Router()
-const usercontroller = require('../controllers/users')
+const express = require('express');
+const router = express.Router();
 
-router.get('/users', usercontroller.index)
+// USER ROUTES
+const userController = require('../controllers/users');
+router.get('/users', userController.index);        // Get all users
+router.get('/user/:id', userController.show);      // Get single user
+router.post('/user', userController.store);        // Create user
+router.put('/user/:id', userController.update);    // Update user
+router.delete('/user/:id', userController.delete); // Delete user
 
-router.get('/user/:id', usercontroller.show)
+// PRODUCT ROUTES
+const productController = require('../controllers/products');
+router.get('/products', productController.index);        // Get all products
+router.get('/product/:id', productController.show);      // Get single product
+router.post('/product', productController.store);        // Create product
+router.put('/product/:id', productController.update);    // Update product
+router.delete('/product/:id', productController.delete); // Delete product
 
-  router.post('/user', usercontroller.store)
-  
-  router.put('/user/:id', usercontroller.update)
-  
-  router.delete('/user/:id', usercontroller.delete)
-  
-  module.exports = router
+// ORDER ROUTES
+const orderController = require('../controllers/orders');
+router.get('/orders', orderController.index);        // Get all orders
+router.get('/order/:id', orderController.show);      // Get single order
+router.post('/order', orderController.store);        // Create order
+router.put('/order/:id', orderController.update);    // Update order
+router.delete('/order/:id', orderController.delete); // Delete order
+
+module.exports = router;
